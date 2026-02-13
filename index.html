@@ -5,119 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Jyotsna 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Inter',sans-serif;
-  height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
   overflow:hidden;
 }
 
-/* ---------- INTRO WITH SUNSET ---------- */
-#intro{
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-    url('https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=1600&q=80');
-  background-size:cover;
-  background-position:center;
+.screen{
+  display:none;
+  height:100vh;
+  width:100%;
+  padding:30px 20px;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-.intro-card{
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:blur(10px);
-  padding:34px 28px;
-  border-radius:22px;
-  text-align:center;
+.active{display:flex}
+
+.card{
+  background:rgba(255,255,255,0.92);
+  border-radius:26px;
+  padding:34px;
   max-width:420px;
-  width:90%;
-  box-shadow:0 25px 60px rgba(0,0,0,0.25);
-  animation:fadeIn 1.6s ease;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.25);
 }
 
-.intro-card h2{
-  margin-bottom:10px;
-}
-
-.intro-card p{
-  color:#444;
-  line-height:1.7;
-  font-size:15px;
-}
+h2{margin-bottom:12px}
+p{line-height:1.8;color:#555;font-size:15px}
 
 button{
   width:100%;
+  padding:15px;
   margin-top:18px;
-  padding:14px;
   border:none;
-  border-radius:30px;
-  background:#111;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
   color:white;
-  font-size:15px;
+  font-size:16px;
   cursor:pointer;
 }
 
-/* ---------- HEARTS ---------- */
+/* hearts */
 .heart{
   position:absolute;
   bottom:-20px;
   font-size:22px;
-  opacity:0.8;
-  animation:float 12s linear infinite;
+  animation:float 14s linear infinite;
+  opacity:.7;
 }
-
 @keyframes float{
-  from{transform:translateY(0); opacity:0}
-  10%{opacity:0.8}
-  to{transform:translateY(-120vh); opacity:0}
+  from{transform:translateY(0);opacity:0}
+  20%{opacity:.8}
+  to{transform:translateY(-120vh);opacity:0}
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px)}
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* ---------- GAME SCREENS ---------- */
-.screen{
-  display:none;
-  width:90%;
-  max-width:420px;
-  background:white;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.15);
-  text-align:center;
-}
-.screen.active{display:block}
-
-h2{margin-bottom:12px}
-p{line-height:1.7;color:#444;font-size:15px}
-.alt{background:#eee;color:#111}
-
-/* ---------- FINAL LETTER ---------- */
+/* final letter */
 #letter{
+  display:none;
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
-  padding:30px 18px;
+  background:
+    linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
+    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80");
+  background-size:cover;
+  background-position:center;
+  padding:40px 20px;
   overflow-y:auto;
-  display:none;
-  animation:fadeIn 2s ease;
 }
+
 .letter-box{
-  background:rgba(255,255,255,0.88);
-  backdrop-filter:blur(12px);
-  border-radius:22px;
-  padding:32px;
-  max-width:540px;
+  background:rgba(255,255,255,.92);
+  border-radius:28px;
+  padding:38px;
+  max-width:520px;
   margin:auto;
-  box-shadow:0 25px 60px rgba(0,0,0,0.18);
+  box-shadow:0 40px 90px rgba(0,0,0,.25);
 }
 </style>
 </head>
@@ -128,107 +98,129 @@ p{line-height:1.7;color:#444;font-size:15px}
   <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_8a7f9f8f63.mp3">
 </audio>
 
-<!-- FLOATING HEARTS -->
-<div class="heart" style="left:10%">🤍</div>
-<div class="heart" style="left:30%; animation-delay:2s">❤️</div>
-<div class="heart" style="left:55%; animation-delay:4s">💗</div>
-<div class="heart" style="left:75%; animation-delay:6s">💖</div>
+<!-- floating hearts -->
+<div class="heart" style="left:10%">🌸</div>
+<div class="heart" style="left:25%;animation-delay:3s">🤍</div>
+<div class="heart" style="left:45%;animation-delay:6s">💗</div>
+<div class="heart" style="left:65%;animation-delay:9s">🌷</div>
+<div class="heart" style="left:85%;animation-delay:12s">💖</div>
 
 <!-- INTRO -->
-<div id="intro">
-  <div class="intro-card">
+<div class="screen active" id="s0">
+  <div class="card">
     <h2>Hey Jyotsna 🤍</h2>
     <p>
-      Before anything else…<br>
-      I want you to slow down a little.
+      Let’s slow down for a moment.  
+      Take a deep breath.  
+      And start a small journey with me 🌅
       <br><br>
-      This isn’t just a game.<br>
-      It’s a few minutes of honesty,<br>
-      patience, and feelings.
-      <br><br>
-      Let’s start with a very small game,<br>
-      and see where it takes us 
+      This isn’t just a game.  
+      It’s feelings… step by step.
     </p>
-    <button onclick="startGame()">Let’s Play</button>
+    <button onclick="next()">Let’s Begin</button>
   </div>
 </div>
 
-<!-- GAME -->
+<!-- QUESTIONS -->
+<div class="screen" id="s1">
+  <div class="card">
+    <h2>Question 1</h2>
+    <p>When things get hard, what matters more?</p>
+    <button onclick="next()">Effort</button>
+  </div>
+</div>
+
 <div class="screen" id="s2">
-  <h2>Level 1 — Promise</h2>
-  <p>When things get hard, what matters more?</p>
-  <button onclick="right(3)">Effort</button>
-  <button class="alt" onclick="wrong()">Ego</button>
+  <div class="card">
+    <h2>Question 2</h2>
+    <p>When she is silent, what do you do?</p>
+    <button onclick="next()">Stay & listen</button>
+  </div>
 </div>
 
 <div class="screen" id="s3">
-  <h2>Level 2 — Patience</h2>
-  <p>Sometimes love asks you to wait.</p>
-  <p><i>Please stay here for 10 seconds.</i></p>
-  <button id="waitBtn" disabled>Waiting…</button>
+  <div class="card">
+    <h2>Question 3</h2>
+    <p>When misunderstandings happen?</p>
+    <button onclick="next()">Communicate</button>
+  </div>
 </div>
 
 <div class="screen" id="s4">
-  <h2>Level 3 — Memory</h2>
-  <p>
-    <b>
-    From now on, every sunset…<br>
-    I want to watch is only with you,<br>
-    until one day I become a star in that sky.
-    </b>
-  </p>
-  <button onclick="finish()">Continue</button>
+  <div class="card">
+    <h2>Patience 🌷</h2>
+    <p>Stay here for a few seconds…</p>
+    <button id="waitBtn" disabled>Waiting…</button>
+  </div>
 </div>
 
+<div class="screen" id="s5">
+  <div class="card">
+    <h2>A Memory 🌅</h2>
+    <p>
+      <b>
+      From now on, every sunset…  
+      I want to watch it only with you,  
+      until one day I become a star in that sky.
+      </b>
+    </p>
+    <button onclick="showLetter()">Continue</button>
+  </div>
+</div>
+
+<!-- FINAL LETTER -->
 <div id="letter">
   <div class="letter-box">
     <h2>Jyotsna 🤍</h2>
     <p>
-      Babbby…<br><br>
-      If you’re reading this, it means you stayed.<br><br>
-      Till my very last breath,<br>
-      I will keep trying to keep you happy,<br>
-      to protect your peace,<br>
-      and to become a better boyfriend.<br><br>
-      You are home and i really really love you baa im very bad at this but i managed to make a lil thing for you babbby hopefully you like it well happy valentine's day my babbbyyy and cheers to more and more together i lovee you jojo 💗.<br><br>
+      If you reached here,  
+      it means you stayed.
+      <br><br>
+      I may not be perfect.  
+      I may take time.  
+      I may mess up.
+      <br><br>
+      But till my very last breath,  
+      I will keep trying  
+      to keep you happy,  
+      to protect your peace,  
+      and to become a better boyfriend.
+      <br><br>
+      You are not an option.  
+      You are my choice.
+      <br><br>
       — your Baa 🤍
     </p>
   </div>
 </div>
 
 <script>
-function startGame(){
-  document.getElementById("intro").style.display="none";
-  document.getElementById("s2").classList.add("active");
-}
+let step=0;
+const screens=document.querySelectorAll(".screen");
 
-function wrong(){
-  alert("Some choices matter 🤍 Try again.");
-}
+function next(){
+  screens[step].classList.remove("active");
+  step++;
+  screens[step].classList.add("active");
 
-function right(n){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
-  if(n===3){
-    let t=10;
+  if(step===4){
+    let t=7;
     const btn=document.getElementById("waitBtn");
     const i=setInterval(()=>{
       t--;
       btn.innerText="Waiting… "+t;
       if(t===0){
         clearInterval(i);
-        btn.innerText="Continue";
-        btn.disabled=false;
-        btn.onclick=()=>right(4);
+        next();
       }
     },1000);
   }
 }
 
-function finish(){
+function showLetter(){
   document.getElementById("letter").style.display="block";
 }
 </script>
 
 </body>
-</html>
+      </html>

@@ -3,38 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For JYOTSNA ❤️</title>
+<title>For Jyotsna 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle, #fff0f5, #ffe4e1);
-  overflow: hidden;
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#fdfbfb,#ebedee);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 
-#top {
-  text-align: center;
-  padding: 15px;
+.card{
+  background:white;
+  width:90%;
+  max-width:420px;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+  text-align:center;
 }
 
-#score, #timer {
-  font-size: 16px;
-  margin: 5px;
+h2{margin-bottom:14px}
+p{line-height:1.6;color:#444}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:none;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  background:#111;
+  color:white;
 }
 
-.heart {
-  position: absolute;
-  font-size: 34px;
-  cursor: pointer;
-  animation: float 4s linear forwards;
+button.alt{
+  background:#eee;
+  color:#111;
 }
 
-@keyframes float {
-  from { transform: translateY(100vh); opacity: 1; }
-  to { transform: translateY(-10vh); opacity: 0; }
+#letter{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  padding:30px 18px;
+  overflow-y:auto;
+  animation:fadeIn 1.5s ease;
 }
 
+.letter-box{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:30px;
+  max-width:520px;
+  margin:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Soft background music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_8a7f9f8f63.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="game">
+  <h2 id="q"></h2>
+  <p id="desc"></p>
+  <button id="a"></button>
+  <button id="b" class="alt"></button>
+</div>
+
+<div id="letter">
+  <div class="letter-box">
+    <h2>Jyotsna 🤍</h2>
+    <p>
+      Bangu…  
+      <br><br>
+      This little game was about choices.  
+      And honestly, so is life.
+      <br><br>
+      Every day gives us options —  
+      to listen or to ignore,  
+      to stay or to walk away,  
+      to put in effort or to make excuses.
+      <br><br>
+      I won’t say I’m perfect.  
+      I won’t say I’ll never mess up.
+      <br><br>
+      But one thing I know for sure is this —
+      <br><br>
+      <b>From now on, every sunset…  
+      I want to watch it only with you,  
+      until one day I become a star in that sky.</b>
+      <br><br>
+      And yes —  
+      <br>
+      <b>till my very last breath</b>,  
+      I will keep trying  
+      to keep you happy,  
+      to protect your peace,  
+      and to become a better boyfriend for you.
+      <br><br>
+      Not because I have to.  
+      But because I choose you.
+      <br><br>
+      Always.  
+      <br>
+      — your Baa 🤍
+    </p>
+  </div>
+</div>
+
+<script>
+const scenes=[
+{
+ q:"When she is upset…",
+ d:"What do you choose?",
+ a:"Stay & listen",
+ b:"Ignore & wait",
+ correct:0
+},
+{
+ q:"When things get difficult…",
+ d:"What matters more?",
+ a:"Effort",
+ b:"Ego",
+ correct:0
+},
+{
+ q:"When love feels heavy…",
+ d:"What do you do?",
+ a:"Hold on",
+ b:"Run away",
+ correct:0
+}
+];
+
+let i=0;
+let correctCount=0;
+
+const q=document.getElementById("q");
+const d=document.getElementById("desc");
+const a=document.getElementById("a");
+const b=document.getElementById("b");
+
+function load(){
+  q.innerText=scenes[i].q;
+  d.innerText=scenes[i].d;
+  a.innerText=scenes[i].a;
+  b.innerText=scenes[i].b;
+}
+
+a.onclick=()=>next(0);
+b.onclick=()=>next(1);
+
+function next(choice){
+  if(choice===scenes[i].correct) correctCount++;
+  i++;
+  if(i>=scenes.length){
+    if(correctCount===scenes.length){
+      document.getElementById("game").style.display="none";
+      document.getElementById("letter").style.display="block";
+    }else{
+      q.innerText="Almost there 🤍";
+      d.innerText="Some choices need a little more thought. Try again.";
+      a.style.display="none";
+      b.style.display="none";
+    }
+  }else{
+    load();
+  }
+}
+
+load();
+</script>
+
+</body>
+</html>
 .pop {
   animation: pop 0.4s ease forwards;
 }

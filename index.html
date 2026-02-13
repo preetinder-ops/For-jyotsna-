@@ -3,112 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Jyotsna ❤️</title>
+<title>For JYOTSNA ❤️</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    color: white;
-    text-align: center;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle, #fff0f5, #ffe4e1);
+  overflow: hidden;
 }
 
-.container {
-    padding: 30px 20px;
+#top {
+  text-align: center;
+  padding: 15px;
 }
 
-h1 {
-    font-size: 2.4rem;
+#score, #timer {
+  font-size: 16px;
+  margin: 5px;
 }
 
-.card {
-    background: rgba(255,255,255,0.15);
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 20px;
-    max-width: 520px;
-    backdrop-filter: blur(10px);
+.heart {
+  position: absolute;
+  font-size: 34px;
+  cursor: pointer;
+  animation: float 4s linear forwards;
 }
 
-footer {
-    margin-top: 40px;
-    font-size: 14px;
-    opacity: 0.8;
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+.pop {
+  animation: pop 0.4s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+#end {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+#end h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#end p {
+  line-height: 1.8;
+  color: #333;
+  font-size: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Hey Jyotsna ❤️</h1>
-    <p>
-        This little website is only for you,  
-        my <b>Bangu 🥺</b>, my <b>Baa ❤️</b>, my forever <b>Babbbyyy 😘</b>
-    </p>
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_4b2c2a7b7b.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="card">
-        <h2>💖 Why I Love You</h2>
-        <p>• Because your smile fixes my worst days</p>
-        <p>• Because you understand me even when I say nothing</p>
-        <p>• Because you are soft, strong, crazy & beautiful — all at once</p>
-        <p>• Because with you, even silence feels perfect</p>
-        <p>• Because you are <b>Jyotsna</b>, and that’s more than enough</p>
-    </div>
-
-    <div class="card">
-        <h2>📖 A Little Message For You</h2>
-        <p>
-        My Baa ❤️,<br><br>
-        I don’t promise perfection,  
-        but I promise effort.  
-        I promise loyalty.  
-        I promise to choose you,  
-        even on the hard days.<br><br>
-        You are my comfort,  
-        my excitement,  
-        and my safest place.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>💌 Open When</h2>
-        <p><b>Open when you miss me, Bangu 🥺</b><br>
-        Close your eyes and imagine me holding you tight.</p>
-
-        <p><b>Open when you’re sad, Babbbyyy 😘</b><br>
-        Remember — you’re never alone. I’m always with you.</p>
-
-        <p><b>Open when you doubt us, my BaBby ❤️</b><br>
-        Read this again — I choose YOU. Always.</p>
-    </div>
-
-    <div class="card">
-        <h2>🎶 This defines you</h2>
-        <p>Play this and think of us ❤️</p>
-        <iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/1Q7EgiMOuw8W6sDvVJZq0L"
-        width="100%" height="80" frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-        </iframe>
-    </div>
-
-    <div class="card">
-        <h2>❤️ Happy Valentine’s Day Jojo</h2>
-        <p>
-        You are my today,  
-        my tomorrow,  
-        my always.<br><br>
-        I love you,  
-        my Bangu 🥺❤️
-        </p>
-    </div>
-
-    <footer>
-        Made with ❤️ only for Jyotsna
-    </footer>
+<div id="top">
+  <h2>Catch My Heart ❤️</h2>
+  <div id="score">Hearts: 0</div>
+  <div id="timer">Time left: 20s</div>
 </div>
+
+<div id="end">
+  <h2>Jyotsna ❤️</h2>
+  <p id="finalScore"></p>
+
+  <p>
+    Bangu… listen to me carefully now.
+    <br><br>
+    This game ends in 20 seconds,
+    but what I feel for you doesn’t end here.
+    <br><br>
+    I may not be perfect.
+    I may mess up.
+    I may learn slowly.
+    <br><br>
+    But one thing is fixed —
+    <b>I will try.</b>
+    <br><br>
+    I will try to make you smile on hard days.
+    I will try to protect your peace.
+    I will try to be someone
+    you feel safe loving.
+    <br><br>
+    From today,
+    from tomorrow,
+    and yes —
+    <b>marte dum tak</b>,
+    I will keep trying
+    to keep you happy
+    and to be a better boyfriend for you.
+    <br><br>
+    Not because I have to.
+    <br>
+    But because
+    <b>I choose you.</b>
+    <br><br>
+    Always —
+    your pavit ❤️
+  </p>
+</div>
+
+<script>
+let score = 0;
+let timeLeft = 20;
+const hearts = ["❤️","💖","💘","💗"];
+const scoreEl = document.getElementById("score");
+const timerEl = document.getElementById("timer");
+const endEl = document.getElementById("end");
+const finalScore = document.getElementById("finalScore");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+  heart.style.left = Math.random() * 90 + "vw";
+
+  heart.onclick = () => {
+    score++;
+    scoreEl.innerText = "Hearts: " + score;
+    heart.classList.add("pop");
+    setTimeout(() => heart.remove(), 300);
+  };
+
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+
+const heartInterval = setInterval(createHeart, 600);
+
+const timer = setInterval(() => {
+  timeLeft--;
+  timerEl.innerText = "Time left: " + timeLeft + "s";
+  if (timeLeft <= 0) {
+    clearInterval(timer);
+    clearInterval(heartInterval);
+    endGame();
+  }
+}, 1000);
+
+function endGame() {
+  document.querySelectorAll(".heart").forEach(h => h.remove());
+  finalScore.innerText = `You caught ${score} hearts 💕`;
+  endEl.style.display = "block";
+}
+</script>
 
 </body>
 </html>

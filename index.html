@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For JYOTSNA 🤍</title>
+<title>For Jyotsna 🤍</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -13,9 +13,11 @@ body{
   margin:0;
   font-family:'Poppins',sans-serif;
   background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+  height:100vh;
   overflow:hidden;
 }
 
+/* screens */
 .screen{
   display:none;
   height:100vh;
@@ -25,8 +27,6 @@ body{
   justify-content:center;
   align-items:center;
 }
-
-.active{display:flex}
 
 .card{
   background:rgba(255,255,255,0.92);
@@ -53,7 +53,7 @@ button{
   cursor:pointer;
 }
 
-/* hearts */
+/* floating hearts */
 .heart{
   position:absolute;
   bottom:-20px;
@@ -98,35 +98,30 @@ button{
   <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_8a7f9f8f63.mp3">
 </audio>
 
-<!-- floating hearts -->
+<!-- hearts -->
 <div class="heart" style="left:10%">🌸</div>
-<div class="heart" style="left:25%;animation-delay:3s">🤍</div>
-<div class="heart" style="left:45%;animation-delay:6s">💗</div>
-<div class="heart" style="left:65%;animation-delay:9s">🌷</div>
-<div class="heart" style="left:85%;animation-delay:12s">💖</div>
+<div class="heart" style="left:30%;animation-delay:3s">🤍</div>
+<div class="heart" style="left:50%;animation-delay:6s">💗</div>
+<div class="heart" style="left:70%;animation-delay:9s">🌷</div>
+<div class="heart" style="left:90%;animation-delay:12s">💖</div>
 
-<!-- INTRO -->
-<div class="screen active" id="s0">
+<!-- SCREENS -->
+<div class="screen" id="s0">
   <div class="card">
     <h2>Hey Jyotsna 🤍</h2>
     <p>
-      Let’s slow down for a moment.  
-      Take a deep breath.  
-      And start a small journey with me 🌅
-      <br><br>
-      This isn’t just a game.  
-      It’s feelings… step by step.
+      Let’s slow down for a moment.<br>
+      Start a small journey with me 🌅
     </p>
-    <button onclick="next()">Let’s Begin</button>
+    <button onclick="goNext()">Let’s Begin</button>
   </div>
 </div>
 
-<!-- QUESTIONS -->
 <div class="screen" id="s1">
   <div class="card">
     <h2>Question 1</h2>
     <p>When things get hard, what matters more?</p>
-    <button onclick="next()">Effort</button>
+    <button onclick="goNext()">Effort</button>
   </div>
 </div>
 
@@ -134,19 +129,11 @@ button{
   <div class="card">
     <h2>Question 2</h2>
     <p>When she is silent, what do you do?</p>
-    <button onclick="next()">Stay & listen</button>
+    <button onclick="goNext()">Stay & listen</button>
   </div>
 </div>
 
 <div class="screen" id="s3">
-  <div class="card">
-    <h2>Question 3</h2>
-    <p>When misunderstandings happen?</p>
-    <button onclick="next()">Communicate</button>
-  </div>
-</div>
-
-<div class="screen" id="s4">
   <div class="card">
     <h2>Patience 🌷</h2>
     <p>Stay here for a few seconds…</p>
@@ -154,13 +141,13 @@ button{
   </div>
 </div>
 
-<div class="screen" id="s5">
+<div class="screen" id="s4">
   <div class="card">
     <h2>A Memory 🌅</h2>
     <p>
       <b>
-      From now on, every sunset…  
-      I want to watch it only with you,  
+      From now on, every sunset…<br>
+      I want to watch it only with you,<br>
       until one day I become a star in that sky.
       </b>
     </p>
@@ -168,59 +155,55 @@ button{
   </div>
 </div>
 
-<!-- FINAL LETTER -->
 <div id="letter">
   <div class="letter-box">
     <h2>Jyotsna 🤍</h2>
     <p>
-      If you reached here,  
-      it means you stayed.
-      <br><br>
-      I may not be perfect.  
-      I may take time.  
-      I may mess up.
-      <br><br>
-      But till my very last breath,  
-      I will keep trying  
-      to keep you happy,  
-      to protect your peace,  
-      and to become a better boyfriend.
-      <br><br>
-      You are not an option.  
-      You are my choice.
-      <br><br>
+      If you reached here, it means you stayed.<br><br>
+      Till my very last breath,<br>
+      I will keep trying to keep you happy,<br>
+      to protect your peace,<br>
+      and to become a better boyfriend.<br><br>
+      You are my choice.<br><br>
       — your Baa 🤍
     </p>
   </div>
 </div>
 
 <script>
-let step=0;
-const screens=document.querySelectorAll(".screen");
+let current = 0;
+const screens = document.querySelectorAll(".screen");
 
-function next(){
-  screens[step].classList.remove("active");
-  step++;
-  screens[step].classList.add("active");
+function show(index){
+  screens.forEach(s => s.style.display = "none");
+  screens[index].style.display = "flex";
+}
 
-  if(step===4){
-    let t=7;
-    const btn=document.getElementById("waitBtn");
-    const i=setInterval(()=>{
-      t--;
-      btn.innerText="Waiting… "+t;
-      if(t===0){
-        clearInterval(i);
-        next();
-      }
-    },1000);
+function goNext(){
+  current++;
+  if(current < screens.length){
+    show(current);
+    if(current === 3){
+      let t = 7;
+      const btn = document.getElementById("waitBtn");
+      const timer = setInterval(()=>{
+        t--;
+        btn.innerText = "Waiting… " + t;
+        if(t === 0){
+          clearInterval(timer);
+          goNext();
+        }
+      },1000);
+    }
   }
 }
 
 function showLetter(){
-  document.getElementById("letter").style.display="block";
+  document.getElementById("letter").style.display = "block";
 }
+
+show(0);
 </script>
 
 </body>
-      </html>
+  </html>

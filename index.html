@@ -1,209 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Jyotsna 🤍</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Jyotsna</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500&display=swap');
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
-  height:100vh;
-  overflow:hidden;
-}
-
-/* screens */
-.screen{
-  display:none;
-  height:100vh;
-  width:100%;
-  padding:30px 20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.card{
-  background:rgba(255,255,255,0.92);
-  border-radius:26px;
-  padding:34px;
-  max-width:420px;
-  width:100%;
-  text-align:center;
-  box-shadow:0 30px 80px rgba(0,0,0,0.25);
-}
-
-h2{margin-bottom:12px}
-p{line-height:1.8;color:#555;font-size:15px}
-
-button{
-  width:100%;
-  padding:15px;
-  margin-top:18px;
-  border:none;
-  border-radius:40px;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3);
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-/* floating hearts */
-.heart{
-  position:absolute;
-  bottom:-20px;
-  font-size:22px;
-  animation:float 14s linear infinite;
-  opacity:.7;
-}
-@keyframes float{
-  from{transform:translateY(0);opacity:0}
-  20%{opacity:.8}
-  to{transform:translateY(-120vh);opacity:0}
-}
-
-/* final letter */
-#letter{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
-    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80");
-  background-size:cover;
-  background-position:center;
-  padding:40px 20px;
-  overflow-y:auto;
-}
-
-.letter-box{
-  background:rgba(255,255,255,.92);
-  border-radius:28px;
-  padding:38px;
-  max-width:520px;
-  margin:auto;
-  box-shadow:0 40px 90px rgba(0,0,0,.25);
-}
-</style>
+        body { margin: 0; font-family: 'Quicksand', sans-serif; overflow: hidden; text-align: center; color: white; background: #000; }
+        .screen { display: none; height: 100vh; width: 100vw; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; transition: opacity 1s ease; }
+        .active { display: flex; opacity: 1; }
+        
+        /* Background Styles */
+        .sunset { background: linear-gradient(#ff5e62, #ff9966, #2c3e50); }
+        .hearts-bg { background: #ff4d6d; background-image: url('https://www.transparenttextures.com/patterns/heart.png'); }
+        .flower-bg { background: #fb6f92; background-image: url('https://www.transparenttextures.com/patterns/flowers.png'); }
+        
+        button { padding: 15px 35px; font-size: 1.1rem; border-radius: 30px; border: none; background: #fff; color: #ff4d6d; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; margin: 10px; }
+        button:hover { transform: scale(1.05); background: #ffe5ec; }
+        
+        .letter-box { padding: 30px; max-width: 85%; background: rgba(255, 255, 255, 0.12); border-radius: 20px; backdrop-filter: blur(15px); line-height: 1.8; border: 1px solid rgba(255,255,255,0.2); overflow-y: auto; max-height: 85vh; text-align: left; }
+        
+        .floating { position: absolute; pointer-events: none; animation: floatUp 5s infinite linear; opacity: 0.7; }
+        @keyframes floatUp { from { transform: translateY(110vh) rotate(0deg); } to { transform: translateY(-10vh) rotate(360deg); } }
+        
+        .highlight { color: #ffb3c1; font-weight: bold; }
+    </style>
 </head>
-
 <body>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_8a7f9f8f63.mp3">
-</audio>
+    <div style="display:none">
+        <div id="player"></div>
+    </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
 
-<!-- hearts -->
-<div class="heart" style="left:10%">🌸</div>
-<div class="heart" style="left:30%;animation-delay:3s">🤍</div>
-<div class="heart" style="left:50%;animation-delay:6s">💗</div>
-<div class="heart" style="left:70%;animation-delay:9s">🌷</div>
-<div class="heart" style="left:90%;animation-delay:12s">💖</div>
+    <div id="s1" class="screen active sunset">
+        <h1 style="font-family: 'Dancing Script', cursive; font-size: 3rem;">Hi Jyotsna...</h1>
+        <p>I built a little world just for you. Ready to walk through our story?</p>
+        <button onclick="startGame()">Start Our Journey ❤️</button>
+    </div>
 
-<!-- SCREENS -->
-<div class="screen" id="s0">
-  <div class="card">
-    <h2>Hey Jyotsna 🤍</h2>
-    <p>
-      Let’s slow down for a moment.<br>
-      Start a small journey with me 🌅
-    </p>
-    <button onclick="goNext()">Let’s Begin</button>
-  </div>
-</div>
+    <div id="s2" class="screen hearts-bg">
+        <h2>Catch 5 Hearts, babbby!</h2>
+        <p>Click them to unlock the next memory.</p>
+        <div id="heart-container"></div>
+    </div>
 
-<div class="screen" id="s1">
-  <div class="card">
-    <h2>Question 1</h2>
-    <p>When things get hard, what matters more?</p>
-    <button onclick="goNext()">Effort</button>
-  </div>
-</div>
+    <div id="s3" class="screen flower-bg">
+        <h2>A promise to you, bangaram...</h2>
+        <p>I will always be the one who chooses you, in every lifetime.</p>
+        <button onclick="next(3)">I promise too</button>
+    </div>
 
-<div class="screen" id="s2">
-  <div class="card">
-    <h2>Question 2</h2>
-    <p>When she is silent, what do you do?</p>
-    <button onclick="goNext()">Stay & listen</button>
-  </div>
-</div>
+    <div id="s4" class="screen sunset">
+        <h2 style="font-family: 'Dancing Script', cursive;">A Moment Locked in Time</h2>
+        <p><b>bangu</b>, do you remember when everything changed?</p>
+        <p>Select the exact moment I asked you to be mine:</p>
+        <button onclick="alert('Not quite! Try again.');">26th March, Midnight</button>
+        <button onclick="next(4)">27th March 2025, 1:34</button>
+        <button onclick="alert('Close, but no!');">28th March, Morning</button>
+    </div>
 
-<div class="screen" id="s3">
-  <div class="card">
-    <h2>Patience 🌷</h2>
-    <p>Stay here for a few seconds…</p>
-    <button id="waitBtn" disabled>Waiting…</button>
-  </div>
-</div>
+    <div id="s5" class="screen hearts-bg">
+        <h2>Don't let go, jojo</h2>
+        <p>Hold the button to show me you're ready for the last part...</p>
+        <button onmousedown="startHold()" onmouseup="endHold()" ontouchstart="startHold()" ontouchend="endHold()">HOLD ME CLOSE</button>
+    </div>
 
-<div class="screen" id="s4">
-  <div class="card">
-    <h2>A Memory 🌅</h2>
-    <p>
-      <b>
-      From now on, every sunset…<br>
-      I want to watch it only with you,<br>
-      until one day I become a star in that sky.
-      </b>
-    </p>
-    <button onclick="showLetter()">Continue</button>
-  </div>
-</div>
+    <div id="s6" class="screen" style="background: #470a10;">
+        <div class="letter-box">
+            <h2 style="font-family: 'Dancing Script', cursive; text-align: center;">To My Dearest Jyotsna,</h2>
+            <p>I was sitting here trying to think of the right words to say, but the truth is, no ‘perfect’ sentence could actually fit how I feel when I look at you.</p>
+            <p><span class="highlight">Babbby</span>, you’ve seen me at my absolute best and my complete worst, and yet, you’re still the person who reaches for my hand first. I don’t think I’ve ever told you how much that safety means to me. In a world that’s constantly changing and exhausting, you are the only place that feels like home.</p>
+            <p>When I think back to <span class="highlight">27th March 2025 at 1:34</span>, my heart still skips a beat. That was the moment I chose my forever. I look at you, <span class="highlight">bangaram</span>, and I realize that all those small moments—the way you laugh when you're tired, the way you look at me when you think I’m not noticing—those are the things I live for. You aren’t just my girlfriend; you’re my person. My best friend. My sanity.</p>
+            <p>I know I don't always say it perfectly, <span class="highlight">bangu</span>, but thank you. Thank you for choosing me every single day. You’ve changed the way I see the world, and honestly, I don’t even remember what my life felt like before you walked into it.</p>
+            <p><span class="highlight">Jojo</span>, I promise to keep showing up for you. I promise to be the man who deserves the love you give so freely. You are my greatest blessing, and I am so incredibly lucky that I get to walk through life with you by my side.</p>
+            <p style="text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.5rem;">Happy Valentine’s Day, Jyotsna. I love you, more than these words could ever show.</p>
+            <p style="text-align: right;"><b>Always yours.</b></p>
+        </div>
+    </div>
 
-<div id="letter">
-  <div class="letter-box">
-    <h2>Jyotsna 🤍</h2>
-    <p>
-      If you reached here, it means you stayed.<br><br>
-      Till my very last breath,<br>
-      I will keep trying to keep you happy,<br>
-      to protect your peace,<br>
-      and to become a better boyfriend.<br><br>
-      You are my choice.<br><br>
-      — your Baa 🤍
-    </p>
-  </div>
-</div>
+    <script>
+        let player;
+        let catchCount = 0;
+        let holdTimer;
 
-<script>
-let current = 0;
-const screens = document.querySelectorAll(".screen");
-
-function show(index){
-  screens.forEach(s => s.style.display = "none");
-  screens[index].style.display = "flex";
-}
-
-function goNext(){
-  current++;
-  if(current < screens.length){
-    show(current);
-    if(current === 3){
-      let t = 7;
-      const btn = document.getElementById("waitBtn");
-      const timer = setInterval(()=>{
-        t--;
-        btn.innerText = "Waiting… " + t;
-        if(t === 0){
-          clearInterval(timer);
-          goNext();
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0',
+                videoId: '2Vv-BfVoq4g', // Ed Sheeran - Perfect
+                events: { 'onReady': onPlayerReady }
+            });
         }
-      },1000);
-    }
-  }
-}
 
-function showLetter(){
-  document.getElementById("letter").style.display = "block";
-}
+        function onPlayerReady(event) {
+            // Music is ready but waits for user click to play
+        }
 
-show(0);
-</script>
+        function startGame() {
+            player.playVideo();
+            next(1);
+            spawnElements('❤️', 'hearts-bg');
+            spawnElements('🌸', 'flower-bg');
+        }
 
+        function next(curr) {
+            document.getElementById('s' + curr).classList.remove('active');
+            document.getElementById('s' + (curr + 1)).classList.add('active');
+            if(curr === 1) spawnCatchHearts();
+        }
+
+        function spawnCatchHearts() {
+            const container = document.getElementById('heart-container');
+            for(let i=0; i<5; i++) {
+                let h = document.createElement('div');
+                h.style.position = 'absolute';
+                h.style.fontSize = '50px';
+                h.style.cursor = 'pointer';
+                h.style.left = Math.random() * 80 + 'vw';
+                h.style.top = Math.random() * 80 + 'vh';
+                h.innerHTML = '❤️';
+                h.onclick = function() {
+                    this.remove();
+                    catchCount++;
+                    if(catchCount >= 5) next(2);
+                };
+                container.appendChild(h);
+            }
+        }
+
+        function spawnElements(char, targetClass) {
+            setInterval(() => {
+                let e = document.createElement('div');
+                e.className = 'floating';
+                e.innerHTML = char;
+                e.style.left = Math.random() * 100 + 'vw';
+                e.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                document.body.appendChild(e);
+                setTimeout(() => e.remove(), 5000);
+            }, 300);
+        }
+
+        function startHold() {
+            holdTimer = setTimeout(() => { next(5); }, 2000);
+        }
+        function endHold() { clearTimeout(holdTimer); }
+    </script>
 </body>
   </html>
+  
